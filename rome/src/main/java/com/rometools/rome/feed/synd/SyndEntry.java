@@ -434,10 +434,9 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
     public SyndLink findRelatedLink(String relation);
     
     
-    public String getImgUrl();
-    
-    public void setImgUrl(String imgUrl);
-    
+	public SyndMedia getMedia();
+	
+	public void setMedia(SyndMedia media);
     
 
 }

@@ -57,8 +57,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private String xmlBase;
     
     //For youtube rss feed
-    private String imgUrl;
-
+    private Media media;
     
     
     public Entry() {
@@ -610,17 +609,13 @@ public class Entry implements Cloneable, Serializable, Extendable {
         return null;
     }
 
-	public String getImgUrl() {
-		return imgUrl;
+	public Media getMedia() {
+		return media;
 	}
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setMedia(Media media) {
+		this.media = media;
 	}
-    
-    
-
-    
     
 
 }

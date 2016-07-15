@@ -68,8 +68,8 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     private SyndFeed source;
     private List<Element> foreignMarkup;
 
-    //For youtubue url
-    private String imgUrl;
+    //For youtubue media
+    private SyndMedia media;
     
     
     // com.rometools.rome.feed.atom.Entry or com.rometools.rome.feed.rss.Item
@@ -106,7 +106,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
         basePropInterfaceMap.put("modules", Module.class);
         basePropInterfaceMap.put("categories", SyndCategory.class);
-        basePropInterfaceMap.put("imgUrl", String.class);
+        basePropInterfaceMap.put("media", SyndMedia.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
@@ -688,15 +688,16 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         return null;
     }
 
-    
 	@Override
-	public String getImgUrl() {
-		return this.imgUrl;
+	public SyndMedia getMedia() {
+		return media;
 	}
 
 	@Override
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setMedia(SyndMedia media) {
+		this.media = media;
 	}
+
+    
 
 }

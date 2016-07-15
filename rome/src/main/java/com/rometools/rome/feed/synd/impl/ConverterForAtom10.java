@@ -28,6 +28,7 @@ import com.rometools.rome.feed.atom.Content;
 import com.rometools.rome.feed.atom.Entry;
 import com.rometools.rome.feed.atom.Feed;
 import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.atom.Media;
 import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.rome.feed.synd.Converter;
@@ -45,6 +46,8 @@ import com.rometools.rome.feed.synd.SyndImage;
 import com.rometools.rome.feed.synd.SyndImageImpl;
 import com.rometools.rome.feed.synd.SyndLink;
 import com.rometools.rome.feed.synd.SyndLinkImpl;
+import com.rometools.rome.feed.synd.SyndMedia;
+import com.rometools.rome.feed.synd.SyndMediaImpl;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
@@ -293,13 +296,17 @@ public class ConverterForAtom10 implements Converter {
         	syndEntry.setSource(syndSource);
         }
         
-        
-        final String imgUrl = entry.getImgUrl();
-        if(imgUrl != null){
-        	syndEntry.setImgUrl(imgUrl);
+        // Add youtube media
+        final Media media = entry.getMedia();
+        if(media != null){
+        	final SyndMedia syndMedia = new SyndMediaImpl();
+        	syndMedia.setContentUrl(media.getContentUrl());
+        	syndMedia.setDescription(media.getDescription());
+        	syndMedia.setThumbnailUrl(media.getThumbnailUrl());
+        	syndMedia.setTitle(media.getTitle());
+        	syndEntry.setMedia(syndMedia);
         }
         
-
         return syndEntry;
     }
 
