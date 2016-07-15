@@ -55,7 +55,12 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private String id;
     private String rights;
     private String xmlBase;
+    
+    //For youtube rss feed
+    private String imgUrl;
 
+    
+    
     public Entry() {
         objBean = new ObjectBean(this.getClass(), this);
     }
@@ -570,7 +575,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
         return ret;
     }
 
-    /**
+    /**	
      * Returns a hashcode value for the object.
      * <p>
      * It follows the contract defined by the Object hashCode() method.
@@ -604,5 +609,18 @@ public class Entry implements Cloneable, Serializable, Extendable {
         }
         return null;
     }
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+    
+    
+
+    
+    
 
 }

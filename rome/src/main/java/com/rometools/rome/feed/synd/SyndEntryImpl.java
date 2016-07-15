@@ -68,12 +68,19 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     private SyndFeed source;
     private List<Element> foreignMarkup;
 
+    //For youtubue url
+    private String imgUrl;
+    
+    
     // com.rometools.rome.feed.atom.Entry or com.rometools.rome.feed.rss.Item
     private Object wireEntry;
 
     // ISSUE: some converters assume this is never null
     private List<SyndCategory> categories = new ArrayList<SyndCategory>();
 
+    
+    
+    
     private static final Set<String> IGNORE_PROPERTIES = new HashSet<String>();
 
     /**
@@ -99,6 +106,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
         basePropInterfaceMap.put("modules", Module.class);
         basePropInterfaceMap.put("categories", SyndCategory.class);
+        basePropInterfaceMap.put("imgUrl", String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
@@ -679,5 +687,16 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         }
         return null;
     }
+
+    
+	@Override
+	public String getImgUrl() {
+		return this.imgUrl;
+	}
+
+	@Override
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 
 }

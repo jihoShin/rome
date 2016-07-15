@@ -462,6 +462,15 @@ public class Atom10Parser extends BaseWireFeedParser {
         if (!foreignMarkup.isEmpty()) {
             entry.setForeignMarkup(foreignMarkup);
         }
+        
+        
+        // For youtube rss
+        // entry -> group -> thumbnail
+        final Element youtube  = eEntry.getChild("group", Namespace.getNamespace("media","http://search.yahoo.com/mrss/"))
+        							   .getChild("thumbnail", Namespace.getNamespace("media","http://search.yahoo.com/mrss/"));
+        if(youtube != null){
+        	entry.setImgUrl(youtube.getAttribute("url").getValue());
+        }
 
         return entry;
     }

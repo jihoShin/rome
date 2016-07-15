@@ -160,6 +160,7 @@ public class ConverterForAtom10 implements Converter {
         if (date != null) {
             syndFeed.setPublishedDate(date);
         }
+        
 
     }
 
@@ -288,9 +289,16 @@ public class ConverterForAtom10 implements Converter {
         // source
         final Feed source = entry.getSource();
         if (source != null) {
-            final SyndFeed syndSource = new SyndFeedImpl(source);
-            syndEntry.setSource(syndSource);
+        	final SyndFeed syndSource = new SyndFeedImpl(source);
+        	syndEntry.setSource(syndSource);
         }
+        
+        
+        final String imgUrl = entry.getImgUrl();
+        if(imgUrl != null){
+        	syndEntry.setImgUrl(imgUrl);
+        }
+        
 
         return syndEntry;
     }
